@@ -14,9 +14,8 @@ export class ProjectReferencesTreeItem extends TreeItem {
         const result: TreeItem[] = [];
         if (this.project?.type === "cps") {
             result.push(new ProjectReferencedProjectsTreeItem(childContext));
-        } else {
-            result.push(new ProjectReferencedAssembliesTreeItem(childContext));
         }
+        result.push(new ProjectReferencedAssembliesTreeItem(childContext));
         result.push(new ProjectReferencedPackagesTreeItem(childContext));
 
         return Promise.resolve(result);
