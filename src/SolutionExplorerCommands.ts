@@ -183,6 +183,9 @@ export class SolutionExplorerCommands {
 
         this.commands['deleteMultiple'] = [new cmds.DeleteUnifiedCommand(),
             [ContextValues.multipleSelection]];
+
+        this.commands['addAssemblies'] = [new cmds.AddAssembliesReferenceCommand(provider),
+            both(ContextValues.project, ContextValues.projectReferencedAssemblies)];
     }
 
     public register() {

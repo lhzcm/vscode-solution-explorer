@@ -58,3 +58,4 @@ export * from "./SelectActiveDocumentInTree";
 export * from "./DotNetTest";
 export * from "./DotNetWatch";
 export * from "./SyncNamespaces";
+export * from "./AddAssemblyReference";

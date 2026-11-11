@@ -4,7 +4,7 @@ import * as xml from "@extensions/xml";
 import { XmlElement } from "@extensions/xml";
 import * as config from "@extensions/config";
 import * as msBuildPropertyOverrides from "@extensions/msBuildPropertyOverrides";
-import { Include, ItemGroup, PackageReference, PackageVersion, ProjectItem, ProjectItemsFactory, PropertyGroup } from "../Items";
+import { Include, ItemGroup, PackageReference, PackageVersion, ProjectItem, ProjectItemsFactory, PropertyGroup, Reference } from "../Items";
 import * as ConditionEvaluator from "../ConditionEvaluator";
 import { ProjectFileStat } from "../ProjectFileStat";
 import { Manager } from "./Manager";
@@ -1100,5 +1100,32 @@ export class XmlManager implements Manager {
         await this.saveProject();
         return;
 
+    }
+    public async removeReference(reference: Reference): Promise<void> {
+        await this.ensureIsLoaded();
+        if (!this.document) {
+            return;
+        }
+        this.document
+    }
+    public async addReference(reference: Reference): Promise<void> {
+        const itemGroup = this.checkCurrentItemGroup();
+        if (!itemGroup) { return; }
+        
+        const referenceElement = {
+            type: 'element',
+            name: 'Reference',
+            attributes: { Include: reference.name },
+            elements: [] as any
+        }
+        if (reference.hintPath) {
+            referenceElement.elements.push({ 
+                type: 'element',
+                name: 'HintPath',
+                elements: [{type: 'text', text: reference.hintPath.replace(/\//g, '\\')}]
+            });
+        }
+        itemGroup.elements.push(referenceElement);
+        await this.saveProject();
     }
 }
