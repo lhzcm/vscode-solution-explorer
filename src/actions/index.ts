@@ -59,3 +59,4 @@ export * from "./DotNetTest";
 export * from "./DotNetWatch";
 export * from "./SyncNamespaces";
 export * from "./AddAssemblyReference";
+export * from "./RemoveAssemblyReference";

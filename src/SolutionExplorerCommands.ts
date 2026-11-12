@@ -133,6 +133,9 @@ export class SolutionExplorerCommands {
         this.commands['removePackage'] = [new cmds.DeleteUnifiedCommand(),
             cps(ContextValues.projectReferencedPackage)];
 
+        this.commands['removeAssembly'] = [new cmds.DeleteUnifiedCommand(),
+            both(ContextValues.projectReferencedAssembly)];
+
         this.commands['removeProject'] = [new cmds.DeleteUnifiedCommand(),
             both(ContextValues.project)];
 

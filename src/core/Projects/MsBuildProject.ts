@@ -162,11 +162,8 @@ export class MsBuildProject extends ProjectWithManagers {
     }
 
     public async removeReference(reference: Reference): Promise<void> {
-        const references = await this.getReferences();
-        if(!references.some(r => r.name === reference.name && r.hintPath === reference.hintPath)) {
-            return;
-        }
-        throw new Error("Method not implemented.");
+        await this.xml.removeReference(reference);
+        await this.refresh();
     }
 
     public async addReference(reference: Reference): Promise<void> {

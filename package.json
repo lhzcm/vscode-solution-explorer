@@ -239,6 +239,12 @@
         "icon": "$(trash)"
       },
       {
+        "command": "solutionExplorer.removeAssembly",
+        "title": "%command.removeProjectReference.title%",
+        "category": "%category.solutionExplorer%",
+        "icon": "$(trash)"
+      },
+      {
         "command": "solutionExplorer.createNewSolution",
         "title": "%command.createNewSolution.title%",
         "category": "%category.solutionExplorer%"
@@ -598,6 +604,16 @@
           "group": "inline"
         },
         {
+          "command": "solutionExplorer.removeAssembly",
+          "when": "view in solutionexplorer.viewTypes && viewItem in solutionExplorer.cmdAllowedContexts.removeAssembly",
+          "group": "7_modification@9"
+        },
+        {
+          "command": "solutionExplorer.removeAssembly",
+          "when": "view in solutionexplorer.viewTypes && (viewItem == project-referenced-assembly-standard || viewItem == project-referenced-assembly-cps)",
+          "group": "inline"
+        },
+        {
           "command": "solutionExplorer.openFile",
           "when": "view in solutionexplorer.viewTypes && viewItem in solutionExplorer.cmdAllowedContexts.openFile",
           "group": "navigation"
@@ -777,6 +793,12 @@
       {
         "command": "solutionExplorer.removeProjectReference",
         "when": "focusedView in solutionexplorer.viewTypes && solutionExplorer.selectionContext in solutionExplorer.cmdAllowedContexts.removeProjectReference",
+        "key": "delete",
+        "mac": "delete"
+      },
+      {
+        "command": "solutionExplorer.removeAssembly",
+        "when": "focusedView in solutionexplorer.viewTypes && solutionExplorer.selectionContext in solutionExplorer.cmdAllowedContexts.removeAssembly",
         "key": "delete",
         "mac": "delete"
       },
